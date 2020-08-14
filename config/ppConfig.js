@@ -1,4 +1,3 @@
-require('dotenv').config()
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const db = require('../models');
@@ -8,6 +7,7 @@ const db = require('../models');
 passport.serializeUser((user, cb) => {
     cb(null, user.id);
 });
+
 // Passport "deserializeUser" is going to take the id and look that 
 // up in the database
 passport.deserializeUser((id, cb) => {
@@ -34,4 +34,5 @@ passport.use(new localStrategy({
     })
     .catch(cb);
 }));
+
 module.exports = passport;

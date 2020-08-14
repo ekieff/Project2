@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
-const passport = require('../config/ppConfig')
-const flash = require('connect-flash');
+const passport = require('../config/ppConfig');
 
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
@@ -30,7 +29,7 @@ router.post('/signup', (req, res) => {
         successFlash: 'Account created and logging in'
       })(req, res);
       // Before passport.authenticate
-      res.redirect('/');
+      //res.redirect('/');
     } else {
       // email already exists
       console.log('Email already exists');
