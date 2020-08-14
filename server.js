@@ -42,7 +42,7 @@ app.use((req, res, next) =>{
 });
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index', { alert: req.flash() });
 });
 
 app.get('/profile', (req, res) => {
