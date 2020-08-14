@@ -33,6 +33,14 @@ app.use(passport.session());
 //flash for temporary messages to the user (like error messages)
 app.use(flash());
 
+//middleware to have our messages accessible for every view
+app.use((req, res, next) =>{
+  //before every route we will attach our user to res.local
+  res.locals.alerts = req.flash();
+  res.locals.currentUser = req.user;
+  next();
+});
+
 app.get('/', (req, res) => {
   res.render('index');
 });
