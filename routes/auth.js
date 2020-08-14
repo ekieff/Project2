@@ -34,13 +34,13 @@ router.post('/signup', (req, res) => {
       // email already exists
       console.log('Email already exists');
       //flash outside of authenticate works like this.
-      req.flash('Email alread exists, please check your email');
+      req.flash('error', 'Email already exists, please check your email');
       res.redirect('/auth/signup');
     }
   })
   .catch(err => {
     console.log('Error', err);
-    req.flash(`Error, unfortunately... ${err}`);
+    req.flash('error', `Error, unfortunately... ${err}`);
     res.redirect('/auth/signup');
   })
 });
@@ -53,7 +53,7 @@ router.post('/login', passport.authenticate('local', {
 }));
 router.get('/logout', (req, res) => {
   req.logout();
+  req.flash('success', 'See you soon, logging out');
   res.redirect('/');
-  req.flash('See you soon, logging out')
 });
 module.exports = router;
