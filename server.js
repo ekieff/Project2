@@ -7,6 +7,9 @@ const SECRET_SESSION = process.env.SECRET_SESSION;
 const passport = require('./config/ppConfig');
 const flash = require('connect-flash');
 
+//require the authroization middleware at the top of the page
+const isLoggedIn = require('./middleware/isLoggedIn');
+
 
 app.set('view engine', 'ejs');
 
@@ -45,7 +48,7 @@ app.get('/', (req, res) => {
   res.render('index', { alert: req.flash() });
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile', isLoggedIn, (req, res) => {
   res.render('profile');
 });
 

@@ -40,7 +40,7 @@ router.post('/signup', (req, res) => {
   })
   .catch(err => {
     console.log('Error', err);
-    req.flash(`Error, unfortunately... ${error}`);
+    req.flash(`Error, unfortunately... ${err}`);
     res.redirect('/auth/signup');
   })
 });
