@@ -26,6 +26,8 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
+    "request": "^2.88.2",
+    "require": "^2.4.20",
     "sequelize": "^5.8.12",
     "unirest": "^0.6.0"
   }
