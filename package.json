@@ -15,16 +15,18 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
-    "dotenv": "^8.0.0",
+    "dotenv": "^8.2.0",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
     "flash": "^1.1.0",
     "morgan": "^1.9.1",
+    "node-fetch": "^2.6.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pg": "^7.11.0",
-    "sequelize": "^5.8.12"
+    "sequelize": "^5.8.12",
+    "unirest": "^0.6.0"
   }
 }
