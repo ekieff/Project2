@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      models.user.hasMany(models.wine)
+      models.user.hasMany(models.wineFlight)
+      models.user.hasMany(models.wineTasting)
     }
   };
   user.init({
