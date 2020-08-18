@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.wineFlight.belongsTo(models.user)
-      models.wineFlight.hasMany(models.wine)
     }
   };
   wineFlight.init({

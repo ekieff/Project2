@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.wineTasting.belongsTo(models.user)
-      models.wineTasting.hasOne(models.wine)
     }
   };
   wineTasting.init({
