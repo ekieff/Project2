@@ -3,6 +3,6 @@ const router = express.Router();
 const db = require('../models');
 
 router.get('/', function(req, res, next){
-    res.render('wine')
+    res.render('wineTastings')
 })
 module.exports = router;
