@@ -11,16 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.wineFlight.belongsTo(models.user)
     }
   };
   wineFlight.init({
-    wine1: DataTypes.STRING,
-    wine2: DataTypes.STRING,
-    wine3: DataTypes.STRING,
-    wine4: DataTypes.STRING,
-    wine5: DataTypes.STRING,
-    wine6: DataTypes.STRING
+    name: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    wine1: DataTypes.INTEGER,
+    wine2: DataTypes.INTEGER,
+    wine3: DataTypes.INTEGER,
+    wine4: DataTypes.INTEGER,
+    wine5: DataTypes.INTEGER,
+    wine6: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'wineFlight',

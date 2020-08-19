@@ -8,23 +8,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      wine1: {
+      name: {
         type: Sequelize.STRING
+      },
+      userId: {
+        type: Sequelize.INTEGER
+      },
+      wine1: {
+        type: Sequelize.INTEGER
       },
       wine2: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       wine3: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       wine4: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       wine5: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       wine6: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
