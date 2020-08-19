@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 
 //require the authroization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
+const db = require('./models');
 
 
 app.set('view engine', 'ejs');
@@ -49,7 +50,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('profile');
+  db.wineFlight.findAll({
+    where: {userId: 1}
+  }).then((wineFlight) => {
+    res.render('profile', { wineFlight: wineFlight }); 
+  }).catch((error) => {
+    console.log(error)
+  })
 });
 
 app.use('/auth', require('./routes/auth'));
