@@ -13,6 +13,6 @@
     "database": "wineapp_production",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "use_env_variable": "postgres://pvzenjqbjxirqw:df6e316ed6f46490965d259fc0ef6a6cc5ac0b3db2f78b2e97b9f342d247c30d@ec2-52-22-94-132.compute-1.amazonaws.com:5432/d4cq51ev323qkg"
+    "use_env_variable": "DATABASE_URL"
   }
 }
