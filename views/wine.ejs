@@ -1,0 +1,26 @@
+<h2>View Available Wines</h2>
+
+<% wine.forEach(w =>{ %>
+    <div>
+        <h2> <%= w.wine %> </h2>
+        <p>
+            <%= w.color %>
+        </p>
+        <p>
+            <%= w.country %>
+        </p>
+        <p>
+            <%= w.region %>
+        </p>
+        <p>
+            <%= w.appelation %>
+        </p>
+        <p>
+            <%= w.vintage %>
+        </p>
+        <button id="addWine">Add Wine</button>
+    </div>
+<% }) %>
+<label for="flightName">Enter your Flight's Name</label>
+<input type="text" id="flightName" name="flightName"></input>
+<button id="makeFlight">Make Your Flight</button>

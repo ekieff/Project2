@@ -61,7 +61,7 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 app.use('/auth', require('./routes/auth'));
 app.use('/wine', require('./routes/wines'));
-app.use('/winetastings', require('./routes/wineTastings'));
+app.use('/wineflights', require('./routes/wineflights'));
 
 const port = process.env.PORT || 3000;
 const server = app.listen(port, () => {
