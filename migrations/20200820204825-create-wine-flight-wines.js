@@ -1,35 +1,17 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('wineFlights', {
+    await queryInterface.createTable('wineFlightWines', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
-      },
-      userId: {
+      wineFlightId: {
         type: Sequelize.INTEGER
       },
-      wine1: {
-        type: Sequelize.INTEGER
-      },
-      wine2: {
-        type: Sequelize.INTEGER
-      },
-      wine3: {
-        type: Sequelize.INTEGER
-      },
-      wine4: {
-        type: Sequelize.INTEGER
-      },
-      wine5: {
-        type: Sequelize.INTEGER
-      },
-      wine6: {
+      wineId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -43,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('wineFlights');
+    await queryInterface.dropTable('wineFlightWines');
   }
 };

@@ -29,22 +29,30 @@ let real= "";
 //     }
 //   })
 // });
-// db.wineFlight.findOrCreate({
-//   where: {
-//     name:'Basic Red Wines',
-//     wine1:1,
-//     wine2:2,
-//     wine3:3,
-//     wine4:4,
-//     wine5:5,
-//     wine6:6,
-//     userId:1
-//   }
-// })
-db.wineTasting.findOrCreate({
+db.wineFlight.findOrCreate({
   where: {
-    userId:1,
-    wineId:1,
-    notes:'plum'
+    name:'Basic Red Wines',
+    userId:1
   }
 })
+db.wineFlightWines.bulkCreate([
+  { wineFlightId:1, wineId:1},
+  { wineFlightId:1, wineId:2},
+  { wineFlightId:1, wineId:3},
+  { wineFlightId:1, wineId:4},
+  { wineFlightId:1, wineId:5},
+  { wineFlightId:1, wineId:6}
+])
+// db.wineTasting.findOrCreate({
+//   where: {
+//     userId:1,
+//     wineId:1,
+//     notes:'plum'
+//   }
+// })
+// db.wineFlightWines.findOrCreate({
+//   where:{
+//     wineId:1,
+//     wineFlights:1
+//   }
+// })

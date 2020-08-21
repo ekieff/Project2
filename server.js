@@ -51,7 +51,8 @@ app.get('/', (req, res) => {
 
 app.get('/profile', isLoggedIn, (req, res) => {
   db.wineFlight.findAll({
-    where: {userId: 1}
+    where: {userId: 1},
+    include: [db.wine]
   }).then((wineFlight) => {
     res.render('profile', { wineFlight: wineFlight }); 
   }).catch((error) => {
