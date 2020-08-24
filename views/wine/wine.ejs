@@ -1,23 +1,14 @@
 <h2>View Available Wines</h2>
-
 <% wine.forEach(w =>{ %>
-    <div>
-        <h2> <%= w.wine %> </h2>
-        <p>
-            <%= w.color %>
-        </p>
-        <p>
-            <%= w.country %>
-        </p>
-        <p>
-            <%= w.region %>
-        </p>
-        <p>
-            <%= w.appelation %>
-        </p>
-        <p>
-            <%= w.vintage %>
-        </p>
-        <a href="/wine/<%= w.id %>">Add a tasting note</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><%= w.wine %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= w.color %></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><%= w.region %></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><%= w.country %></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><%= w.appelation %></h6>
+      <h6 class="card-subtitle mb-2 text-muted"><%= w.vintage %></h6>
+      <a href="/wine/<%= w.id %>" class="wine">Add a tasting note</a>
     </div>
-<% }) %>
+  </div>
+  <% }) %>
