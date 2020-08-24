@@ -17,6 +17,16 @@ router.delete("/:id", async (req, res) => {
     }
   });
 
+  router.put('/:id', (req, res) => {
+    db.wineTasting.update(
+        {notes: req.body.name}, 
+        {where: {id: req.params.id}}
+        )
+    .then(() => {
+        res.redirect('/wine')
+    })
+})
+
 router.get('/:id', (req,res) => {
     db.wineTasting.findOne({
         where:{id: req.params.id}
