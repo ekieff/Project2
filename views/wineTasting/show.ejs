@@ -1,0 +1,6 @@
+<h1><%= wineTasting.notes%></h1>
+
+<form method="POST" action="/wineTasting/<%= wineTasting.id %>?_method=DELETE">
+    <input type="hidden" name="id" value="<%= wineTasting.id %>">
+    <button type="submit">Remove</button>
+ </form> 

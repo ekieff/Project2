@@ -9,9 +9,7 @@
       <h3>
         <%= a.notes %>
       </h3>
-      <form method="DELETE" action="/wine/:id">
-        <input type="hidden" name="<%= a.notes %>" value="<%= a.id %>"/>
-        <button class="deleteButton" type="submit">Remove this note</button>
+      <a href="/winetasting/<%= a.id %>">View this tasting note</a>
     </form>
     </div>
   <% }) %>

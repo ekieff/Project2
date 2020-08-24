@@ -25,16 +25,6 @@ router.post('/', (req, res) =>{
     })
 })
 
-router.delete('/:id', (req, res) =>{
-    db.wineTastings.destroy({
-        where: {id:req.body.wineTasting}
-    }).then(() =>{
-        res.redirect('/')
-    }).catch((error) =>{
-        console.log(error)
-    })
-})
-
 router.get('/:id', (req, res) => {
     db.wine.findOne({
       where: { id: req.params.id },
@@ -42,13 +32,22 @@ router.get('/:id', (req, res) => {
     })
     .then((wine) => {
       if (!wine) throw Error()
-      console.log(wine.wineTasting)
       res.render('wine/show', { wine: wine, wineTasting: wine.wineTasting })
+      console.log(wine.wineTastings)
     })
     .catch((error) => {
       console.log(error)
     })
   })
 
+  router.delete('/:id', (req, res) =>{
+    db.wineTasting.destroy({
+        where: {id:res.body.tastingId}
+    }).then(() =>{
+        res.redirect('')
+    }).catch((error) =>{
+        console.log(error)
+    })
+})
 
 module.exports = router;
