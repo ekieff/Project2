@@ -73,3 +73,5 @@ sequelize db:migrate
 
 Create your .env file, input your secret session and api key
 
+## Next Steps
+I'd like to add additional features to my application, like adding more wines from the API, and getting the userId from userName.
