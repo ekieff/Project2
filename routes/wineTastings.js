@@ -23,7 +23,7 @@ router.delete("/:id", async (req, res) => {
         {where: {id: req.params.id}}
         )
     .then(() => {
-        res.redirect('/wine')
+        res.redirect()
     })
 })
 

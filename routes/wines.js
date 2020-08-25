@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res) =>{
     db.wineTasting.create({
-        userId: req.body.userId,
+        userId: req.user.id,
         notes: req.body.notes,
         wineId: req.body.wineId
     })
