@@ -17,15 +17,17 @@ router.delete("/:id", async (req, res) => {
     }
   });
 
-  router.put('/:id', (req, res) => {
-    db.wineTasting.update(
-        {notes: req.body.name}, 
+  router.put("/:id", async (req, res) => {
+    try {
+      await db.wineTasting.update(
+        {notes: req.body.name},
         {where: {id: req.params.id}}
-        )
-    .then(() => {
-        res.redirect()
-    })
-})
+      );
+      res.redirect('/wine');
+    } catch (error) {
+      console.log("error");
+    }
+  });
 
 router.get('/:id', (req,res) => {
     db.wineTasting.findOne({

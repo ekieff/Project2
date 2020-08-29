@@ -24,12 +24,12 @@ This app is built with RESTful routes.
 | Column Name | Data Type | Notes |
 | --------------- | ------------- | ------------------------------ |
 | id | Integer | Serial Primary Key, Auto-generated |
-| wine | String | Must be provided |
-| color | String | Must be unique / used for login |
-| country | String | Stored as a hash |
-| region | String | Auto-generated |
-| appelation | String | Auto-generated |
-| vintage | Integer | Auto-generated |
+| wine | String | From API |
+| color | String | From API |
+| country | String | From API |
+| region | String | From API |
+| appelation | String | From API |
+| vintage | Integer | From API |
 | createdAt | Date | Auto-generated |
 | updatedAt | Date | Auto-generated |
 
@@ -71,7 +71,8 @@ sequelize db:migrate
 
 #### 3. Create .env
 
-Create your .env file, input your secret session and api key
+Create your .env file, input your secret session and api key.
+You may also wish to use seed.js to migrate my wines into your database.
 
 ## Next Steps
 I'd like to add additional features to my application, like adding more wines from the API, and getting the userId from userName.
