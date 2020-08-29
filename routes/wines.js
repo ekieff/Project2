@@ -1,11 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models');
+var API_KEY = process.env.API_KEY;
+var rp = require('request-promise');
+
+var fetch = require("node-fetch");
 
 router.get('/', (req, res, next) => {
-    db.wine.findAll({
-    }).then((wine) => {
-    res.render('./wine/wine', {wine: wine})
+    rp({
+        method: 'GET',
+        url: 'https://api.globalwinescore.com/globalwinescores/latest?limit=10',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': API_KEY
+        },
+        json:true
+    })
+      .then((response) => {
+        let results = response;
+          console.log(results)
+    res.render('./wine/wine', {wine: results.results})
     }).catch((error) => {
     console.log(error)
     })

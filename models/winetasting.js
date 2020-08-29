@@ -12,12 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.wineTasting.belongsTo(models.user)
-      models.wineTasting.belongsTo(models.wine)
     }
   };
   wineTasting.init({
     userId: DataTypes.INTEGER,
-    wineId: DataTypes.INTEGER,
+    wineAPIId: DataTypes.INTEGER,
     notes: DataTypes.TEXT
   }, {
     sequelize,

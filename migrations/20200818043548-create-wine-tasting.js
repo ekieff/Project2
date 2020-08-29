@@ -11,7 +11,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      wineId: {
+      wineAPIId: {
         type: Sequelize.INTEGER
       },
       notes: {
