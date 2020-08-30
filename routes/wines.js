@@ -5,6 +5,7 @@ var API_KEY = process.env.API_KEY;
 var rp = require('request-promise');
 
 var fetch = require("node-fetch");
+const { response } = require('express');
 
 router.get('/', (req, res, next) => {
     rp({
@@ -17,9 +18,7 @@ router.get('/', (req, res, next) => {
         json:true
     })
       .then((response) => {
-        let results = response;
-          console.log(results)
-    res.render('./wine/wine', {wine: results.results})
+    res.render('./wine/wine', {wine: response.results})
     }).catch((error) => {
     console.log(error)
     })
@@ -29,25 +28,33 @@ router.post('/', (req, res) =>{
     db.wineTasting.create({
         userId: req.user.id,
         notes: req.body.notes,
-        wineId: req.body.wineId
+        wineAPIId: req.body.wineAPIId
     })
     .then((wineTasting) => {
         console.log(wineTasting)
-        res.redirect('/')
+        res.redirect('/wine')
     }).catch((error) =>{
         console.log(error)
     })
 })
 
 router.get('/:id', (req, res) => {
-    db.wine.findOne({
-      where: { id: req.params.id },
-      include: [db.wineTasting]
+    rp({
+        method: 'GET',
+        url: 'https://api.globalwinescore.com/globalwinescores/latest/?wine_id='+ req.params.id,
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': API_KEY
+        },
+        json:true
     })
-    .then((wine) => {
-      if (!wine) throw Error()
-      res.render('wine/show', { wine: wine, wineTasting: wine.wineTasting })
-      console.log(wine.wineTastings)
+    .then((results) => {
+        db.wineTasting.findAll({
+            where: { wineAPIId: req.params.id }
+          }).then((wineTasting) => {
+              console.log(wineTasting)
+              res.render('wine/show', { wine: results.results[0], wineTasting: wineTasting})
+          })
     })
     .catch((error) => {
       console.log(error)
@@ -58,7 +65,7 @@ router.get('/:id', (req, res) => {
     db.wineTasting.destroy({
         where: {id:res.body.tastingId}
     }).then(() =>{
-        res.redirect('')
+        res.redirect('/wine')
     }).catch((error) =>{
         console.log(error)
     })
