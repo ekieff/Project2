@@ -1,12 +1,15 @@
 
 <h1><%= wineTasting.notes%></h1>
+<% if (user = wineTasting.userId){ %>
+    <form method="POST" action="/wineTasting/<%= wineTasting.id %>?_method=DELETE">
+        <input type="hidden" name="id" value="<%= wineTasting.id %>">
+        <button type="submit">Remove</button>
+     </form> 
+    
+     <form method="POST" action="/wineTasting/<%=wineTasting.id%>/?_method=PUT">
+        <input type="text" name="name" value=" ">
+        <button type="submit">Update</button>
+    </form>
 
-<form method="POST" action="/wineTasting/<%= wineTasting.id %>?_method=DELETE">
-    <input type="hidden" name="id" value="<%= wineTasting.id %>">
-    <button type="submit">Remove</button>
- </form> 
-
- <form method="POST" action="/wineTasting/<%=wineTasting.id%>/?_method=PUT">
-    <input type="text" name="name" value=" ">
-    <button type="submit">Update</button>
-</form>
+<% } else { %>
+    <% } %>

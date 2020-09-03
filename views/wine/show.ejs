@@ -17,7 +17,7 @@
 
   <div>
   <h4>Add a new tasting note:</h4>
-  <form method="POST" action="/wine">
+  <form method="POST" action="/wineTasting/<%= wine.wine_id %>">
     <input type="hidden" name="wineAPIId" value="<%= wine.wine_id %>" />
     <label for="notes">notes</label>
     <input type="text" id="notes" name="notes" required />

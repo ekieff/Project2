@@ -24,19 +24,7 @@ router.get('/', (req, res, next) => {
     })
 })
 
-router.post('/', (req, res) =>{
-    db.wineTasting.create({
-        userId: req.user.id,
-        notes: req.body.notes,
-        wineAPIId: req.body.wineAPIId
-    })
-    .then((wineTasting) => {
-        console.log(wineTasting)
-        res.redirect('/wine') //maybe I can use the req.body to redirect back?
-    }).catch((error) =>{
-        console.log(error)
-    })
-})
+
 
 router.get('/:id', (req, res) => {
     rp({

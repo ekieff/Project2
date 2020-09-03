@@ -10,7 +10,8 @@ const flash = require('connect-flash');
 //require the authroization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
 const db = require('./models');
-const wine = require('./models/wine');
+var API_KEY = process.env.API_KEY;
+var rp = require('request-promise');
 
 
 app.set('view engine', 'ejs');
@@ -51,8 +52,27 @@ app.get('/', (req, res) => {
 });
 
 app.get('/profile', isLoggedIn, (req, res) => {
-  res.render('./users/profile');
-  });
+    rp({
+        method: 'GET',
+        url: 'https://api.globalwinescore.com/globalwinescores/latest/?',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': API_KEY
+        },
+        json:true
+    })
+    .then((results) => {
+        db.wineTasting.findAll({
+            where: { userId: req.user.id }
+          }).then((wineTasting) => {
+              console.log(wineTasting)
+              res.render('./users/profile', { wine: results.results[0], wineTasting: wineTasting})
+          })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  })
 
 app.use('/auth', require('./routes/auth'));
 app.use('/wine', require('./routes/wines'));
