@@ -54,6 +54,13 @@ This app is built with RESTful routes.
 | POST | /auth/signup | auth.js | Creates User |
 | GET | /auth/logout | auth.js | Removes session info |
 | GET | /profile | server.js | Regular User Profile |
+| GET | /wines | wines.js | get wines from API |
+| GET | /wines/:id | wines.js | render both wine details and associated wineTastings for a wine |
+| POST | /wines | wine.js | while in the wine create a new tasting |
+| GET | /wineTastings/:id | wineTastings.js | get a wineTasting by id | 
+| PUT | /wineTastings/:id | wineTastings.js | update a wine tasting |
+| DELETE | /wineTastings/:id | wineTastings.js | delete a wine tasting |
+
 
 ## Steps To Use
 
@@ -71,8 +78,7 @@ sequelize db:migrate
 
 #### 3. Create .env
 
-Create your .env file, input your secret session and api key.
-You may also wish to use seed.js to migrate my wines into your database.
+Create your .env file, input your secret session and api key from Global Wine score, https://www.globalwinescore.com/api/ .
 
 ## Next Steps
-I'd like to add additional features to my application, like adding more wines from the API, and getting the userId from userName.
+I'd like to add additional features to my application, like increasing styling to reflect the sommelier exam.

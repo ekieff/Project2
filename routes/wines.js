@@ -32,7 +32,7 @@ router.post('/', (req, res) =>{
     })
     .then((wineTasting) => {
         console.log(wineTasting)
-        res.redirect('/wine')
+        res.redirect('/wine') //maybe I can use the req.body to redirect back?
     }).catch((error) =>{
         console.log(error)
     })
@@ -60,15 +60,5 @@ router.get('/:id', (req, res) => {
       console.log(error)
     })
   })
-
-  router.delete('/:id', (req, res) =>{
-    db.wineTasting.destroy({
-        where: {id:res.body.tastingId}
-    }).then(() =>{
-        res.redirect('/wine')
-    }).catch((error) =>{
-        console.log(error)
-    })
-})
 
 module.exports = router;
