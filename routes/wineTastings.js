@@ -48,9 +48,11 @@ router.post('/:id', (req, res) =>{
   db.wineTasting.create({
       userId: req.user.id,
       notes: req.body.notes,
-      wineAPIId: req.body.wineAPIId
+      wineAPIId: req.body.wineAPIId,
   })
   .then((wineTasting) => {
+    let wine = req.body.wineName
+    console.log(wine)
       console.log(wineTasting)
       res.redirect(`/wine/${req.body.wineAPIId}`)
   }).catch((error) =>{
