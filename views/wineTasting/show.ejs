@@ -1,4 +1,6 @@
 
+
+<h1><%= wine %></h1>
 <h1><%= wineTasting.notes%></h1>
 <% if (user === wineTasting.userId){ %>
     <form method="POST" action="/wineTasting/<%= wineTasting.id %>?_method=DELETE">

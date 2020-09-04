@@ -1,6 +1,8 @@
 # Wine-os App
 
 This app is built with RESTful routes.
+You can interact with the app on heroku here:
+https://elaines-wineapp.herokuapp.com/ 
 
 ## User Stories
 
@@ -8,6 +10,7 @@ This app is built with RESTful routes.
 * A user can view all wines.
 * A user can view all notes for a wine.
 * A user can add a note, edit a note, or delete a note to a wine.
+* A user can view their notes on their profile page
 
 ### Models
 ## User
@@ -53,11 +56,11 @@ This app is built with RESTful routes.
 | POST | /auth/login | auth.js | Login user |
 | POST | /auth/signup | auth.js | Creates User |
 | GET | /auth/logout | auth.js | Removes session info |
-| GET | /profile | server.js | Regular User Profile |
+| GET | /profile | server.js | Displays a user's wine notes |
 | GET | /wines | wines.js | get wines from API |
 | GET | /wines/:id | wines.js | render both wine details and associated wineTastings for a wine |
-| POST | /wines | wine.js | while in the wine create a new tasting |
-| GET | /wineTastings/:id | wineTastings.js | get a wineTasting by id | 
+| POST | /winesTastings | wineTastings.js | while in the wine create a new tasting |
+| GET | winetasting/:id/:winename | wineTastings.js | get a wineTasting by id and return the wine name in profile | 
 | PUT | /wineTastings/:id | wineTastings.js | update a wine tasting |
 | DELETE | /wineTastings/:id | wineTastings.js | delete a wine tasting |
 

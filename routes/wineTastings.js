@@ -32,12 +32,14 @@ router.delete("/:id", async (req, res) => {
     }
   });
 
-router.get('/:id', (req,res) => { 
+router.get('/:id/:winename', (req,res) => { 
   db.wineTasting.findOne({
         where:{id: req.params.id}
 }).then((wineTasting) =>{
   let user = req.user.id
-  res.render('wineTasting/show', {wineTasting : wineTasting, user: user } )
+  let wine = req.params.winename
+  console.log("HERESE A WINE LOOJ AT THIS WINE", wine)
+  res.render('wineTasting/show', {wineTasting : wineTasting, user: user, wine:wine } )
   console.log(user)
 }).catch((error) =>{
     console.log(error)
@@ -51,8 +53,6 @@ router.post('/:id', (req, res) =>{
       wineAPIId: req.body.wineAPIId,
   })
   .then((wineTasting) => {
-    let wine = req.body.wineName
-    console.log(wine)
       console.log(wineTasting)
       res.redirect(`/wine/${req.body.wineAPIId}`)
   }).catch((error) =>{
