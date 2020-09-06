@@ -51,28 +51,15 @@ app.get('/', (req, res) => {
   res.render('index', { alert: res.locals.alerts });
 });
 
-app.get('/profile', isLoggedIn, (req, res) => {
-    rp({
-        method: 'GET',
-        url: 'https://api.globalwinescore.com/globalwinescores/latest/?',
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': API_KEY
-        },
-        json:true
-    })
-    .then((results) => {
-        db.wineTasting.findAll({
+app.get('/profile', isLoggedIn, (req, res) => {  
+    db.wineTasting.findAll({
             where: { userId: req.user.id }
           }).then((wineTasting) => {
+            let user = req.user
               console.log(wineTasting)
-              res.render('./users/profile', { wine: results.results[0], wineTasting: wineTasting})
+              res.render('./users/profile', { wineTasting: wineTasting, user:user})
           })
     })
-    .catch((error) => {
-      console.log(error)
-    })
-  })
 
 app.use('/auth', require('./routes/auth'));
 app.use('/wine', require('./routes/wines'));

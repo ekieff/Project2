@@ -1,11 +1,11 @@
-<h2>User Profile for </h2>
+<h2>User Profile for <%=user.name %></h2>
 
 <% wineTasting.forEach(function(a) { %>
 <div class="tasting">
     <h4>
         <%= a.notes %>
     </h4>
-    <a href="/winetasting/<%= a.id %>">View this tasting note</a>
+    <a href="/wine/<%= a.wineAPIId %>">View this wine</a>
 </div>
 <br />
 <% }) %>
