@@ -33,10 +33,7 @@ router.delete("/:id", async (req, res) => {
         {where: {id: req.params.id},
         returning: true
       })
-      .then((updatedTasting)=>{
-        console.log("does it give us the updated object???", updatedTasting[1][0].dataValues)
-      })
-      res.redirect(`/wine/${updatedTasting[1][0].dataValues.wineAPIId}`);
+      res.redirect(`/wine/${req.body.wineAPIId}`);
     } catch (error) {
       console.log("error");
     }

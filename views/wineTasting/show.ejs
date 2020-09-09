@@ -5,11 +5,13 @@
 <% if (user === wineTasting.userId){ %>
     <form method="POST" action="/wineTasting/<%= wineTasting.id %>?_method=DELETE">
         <input type="hidden" name="id" value="<%= wineTasting.id %>">
+        <input type="hidden" name="wineAPIId" value="<%= wineTasting.wineAPIId %>">
         <button type="submit">Remove</button>
      </form> 
     
-     <form method="POST" action="/wineTasting/<%=wineTasting.id%>/?_method=PUT">
+     <form method="POST" action="/wineTasting/<%=wineTasting.id%>?_method=PUT">
         <input type="text" name="name" value=" ">
+        <input type="hidden" name="wineAPIId" value="<%= wineTasting.wineAPIId %>">
         <button type="submit">Update</button>
     </form>
 
