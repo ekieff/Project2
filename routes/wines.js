@@ -17,10 +17,10 @@ router.get('/', (req, res, next) => {
         },
         json:true
     })
-      .then((response) => {
-    res.render('./wine/wine', {wine: response.results})
+    .then((response) => {
+      res.render('./wine/wine', {wine: response.results})
     }).catch((error) => {
-    console.log(error)
+      console.log(error)
     })
 })
 

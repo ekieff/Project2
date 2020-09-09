@@ -8,6 +8,7 @@ var rp = require('request-promise');
 
 
 router.delete("/:id", async (req, res) => {
+  console.log("DELETE ROUTE req.body.wineAPIID>>>>>>>>>>>>>>>", req.body.wineAPIId)
     try {
       await db.wineTasting.destroy({
         where: {
@@ -21,12 +22,21 @@ router.delete("/:id", async (req, res) => {
   });
 
   router.put("/:id", async (req, res) => {
+    console.log("PUT ROUTE req.body.wineAPIID>>>>>>>>>>>>>>>", req.body.wineAPIId)
     try {
-      await db.wineTasting.update(
+      // await db.wineTasting.update(
+      //   {notes: req.body.name},
+      //   {where: {id: req.params.id}}
+      // )
+      db.wineTasting.update(
         {notes: req.body.name},
-        {where: {id: req.params.id}}
-      );
-      res.redirect(`/wine/${req.body.wineAPIId}`);
+        {where: {id: req.params.id},
+        returning: true
+      })
+      .then((updatedTasting)=>{
+        console.log("does it give us the updated object???", updatedTasting[1][0].dataValues)
+      })
+      res.redirect(`/wine/${updatedTasting[1][0].dataValues.wineAPIId}`);
     } catch (error) {
       console.log("error");
     }
@@ -35,15 +45,15 @@ router.delete("/:id", async (req, res) => {
 router.get('/:id/:winename', (req,res) => { 
   db.wineTasting.findOne({
         where:{id: req.params.id}
-}).then((wineTasting) =>{
-  let user = req.user.id
-  let wine = req.params.winename
-  console.log("HERESE A WINE LOOJ AT THIS WINE", wine)
-  res.render('wineTasting/show', {wineTasting : wineTasting, user: user, wine:wine } )
-  console.log(user)
-}).catch((error) =>{
-    console.log(error)
-})
+  }).then((wineTasting) =>{
+    let user = req.user.id
+    let wine = req.params.winename
+    console.log("HERESE A WINE LOOJ AT THIS WINE", wine)
+    res.render('wineTasting/show', {wineTasting : wineTasting, user: user, wine:wine } )
+    console.log(user)
+  }).catch((error) =>{
+      console.log(error)
+  })
 })
 
 router.post('/:id', (req, res) =>{
