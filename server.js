@@ -10,6 +10,8 @@ const flash = require('connect-flash');
 //require the authroization middleware at the top of the page
 const isLoggedIn = require('./middleware/isLoggedIn');
 const db = require('./models');
+
+// TODO: remove unused modules/variables
 var API_KEY = process.env.API_KEY;
 var rp = require('request-promise');
 

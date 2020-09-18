@@ -68,20 +68,33 @@ https://elaines-wineapp.herokuapp.com/
 ## Steps To Use
 
 #### 1. Download dependencies
-* Fork this repo
-* 
-```
+* Fork and clone this repo
+* Install dependencies with npm
+
+```bash
 npm i 
 ```
 
 #### 2. Update config.json
+
+**TODO: add db name here and put commands in code snippets**
+**What "update your database witH your database file" mean?**
+
 sequelize db:create and
 update your database with your database file.
 sequelize db:migrate
 
 #### 3. Create .env
 
+**TODO: give exact names for what environment variables are needed**
+
 Create your .env file, input your secret session and api key from Global Wine score, https://www.globalwinescore.com/api/ .
 
 ## Next Steps
 I'd like to add additional features to my application, like increasing styling to reflect the sommelier exam.
+
+
+# more todos:
+
+* push changes to heroku which doesn't look like it's updated
+* when you have time, add styling!
